@@ -63,7 +63,7 @@ class AttentionSystem:
         return followers
 
     def reward_users(self, views, likes, followers):
-        print("\n💰 Calcul des récompenses en $ATTN...")
+        print("Calcul des récompenses en $ATTN...")
         usd_from_views = views * 0.001  # 0.1 cent par vue
         usd_from_likes = likes * 0.005  # 0.5 cent par like
         usd_from_followers = followers * 0.01  # 1 cent par abonné
@@ -79,7 +79,7 @@ class AttentionSystem:
         print(f"  (Revenus simulés : ${total_usd:.2f})")
 
     def reward_donations(self, amount_donated, donor_username, allocation):
-        print(f"\n💰 Récompense du don de {amount_donated} USD effectué par {donor_username}...")
+        print(f"Récompense du don de {amount_donated} USD effectué par {donor_username}...")
 
         # Créer les tokens en fonction du don
         minted = self.treasury.mint_attn(amount_donated)
@@ -87,7 +87,7 @@ class AttentionSystem:
         # Calculer la répartition des tokens
         total_allocation = sum(allocation.values())
         if total_allocation != 100:
-            print("⚠️ La somme des répartitions ne fait pas 100%. Elle sera normalisée.")
+            print("La somme des répartitions ne fait pas 100%. Elle sera normalisée.")
             # Normaliser la répartition si la somme n'est pas 100
             factor = 100 / total_allocation
             allocation = {project: amount * factor for project, amount in allocation.items()}
@@ -95,20 +95,20 @@ class AttentionSystem:
         # Répartir les tokens vers chaque projet selon la répartition
         for project, percentage in allocation.items():
             allocated_tokens = minted * (percentage / 100)
-            print(f"✅ {allocated_tokens:.2f} $ATTN attribués au projet {project}.")
+            print(f"{allocated_tokens:.2f} $ATTN attribués au projet {project}.")
 
         # On envoie les tokens au donneur si choix de se garder des tokens
         if "self" in allocation:
             user = self.users[donor_username]
             user.attn_balance += minted * (allocation["self"] / 100)
-            print(f"✅ {minted * (allocation['self'] / 100):.2f} $ATTN ajoutés à ton solde.")
+            print(f"{minted * (allocation['self'] / 100):.2f} $ATTN ajoutés à ton solde.")
 
-        print(f"✅ {minted:.0f} $ATTN créés et répartis.")
+        print(f"{minted:.0f} $ATTN créés et répartis.")
         print(f"  (Dons reçus : ${amount_donated:.2f})")
 
     def report(self):
         """Affiche les soldes des utilisateurs"""
-        print("\n📊 Soldes des utilisateurs :")
+        print("Soldes des utilisateurs :")
         for user in self.users.values():
             print(f" - {user.username}: {user.attn_balance:.2f} $ATTN")
 
@@ -125,7 +125,7 @@ if __name__ == "__main__":
         views, likes = system.get_instagram_metrics()
         followers = system.get_followers()
     except Exception:
-        print("⚠️ Mode simulation activé (pas de token Meta).")
+        print("Mode simulation activé (pas de token Meta).")
         views, likes, followers = 20000, 1500, 500  # Valeurs fictives
 
     # Récompenses basées sur les actions
