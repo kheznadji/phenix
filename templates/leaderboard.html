@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Classement ATTN</title>
+
+    <style>
+
+        /* ---------- GLOBAL ---------- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Poppins, Arial, sans-serif;
+
+            /* BEIGE PREMIUM */
+            background: linear-gradient(140deg, #f8f5ef, #f4efe6);
+        }
+
+        /* ---------- SECTION CLASSEMENT ---------- */
+        .leaderboard-section {
+            padding: 60px 0;
+            min-height: 100vh;
+        }
+
+        /* ---------- CONTENEUR ---------- */
+        .container {
+            width: 85%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* ---------- TITRE ---------- */
+        .title {
+            font-size: 3rem;
+            color: #0baa67;
+            margin-bottom: 40px;
+            text-shadow: 0 3px 15px rgba(0, 180, 80, 0.15);
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+        }
+
+        /* ---------- BOARD ---------- */
+        .board {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* ---------- USER CARD ---------- */
+        .user-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-left: 8px solid #00c97a;
+            border-radius: 20px;
+            padding: 20px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0px 10px 30px rgba(0, 150, 90, 0.15);
+            backdrop-filter: blur(10px);
+
+            transition: 0.3s ease;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .user-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0px 18px 35px rgba(0, 150, 90, 0.25);
+        }
+
+        /* ---------- RANK ---------- */
+        .rank-badge {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #00b86f;
+            text-shadow: 0 2px 10px rgba(0, 150, 80, 0.3);
+        }
+
+        /* ---------- USERNAME ---------- */
+        .username {
+            font-size: 1.45rem;
+            font-weight: 600;
+            color: #222;
+        }
+
+        /* ---------- TOKEN VALUE ---------- */
+        .tokens {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #00b86f;
+        }
+
+        /* ---------- ANIMATIONS ---------- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 700px) {
+            .user-card {
+                flex-direction: column;
+                gap: 10px;
+                padding: 25px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+<section class="leaderboard-section">
+    <div class="container">
+
+        <h1 class="title">🫒 Ranking Holders</h1>
+
+        <div class="board">
+            {% for user in users %}
+            <div class="user-card">
+                <div class="rank-badge">{{ loop.index }}</div>
+                <div class="username">{{ user.username }}</div>
+                <div class="tokens">{{ "%.2f"|format(user.attn_balance) }} 🫒</div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>

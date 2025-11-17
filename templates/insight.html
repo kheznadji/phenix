@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Insights Instagram</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f7f6f3; /* blanc cassé élégant */
+            font-family: "Inter", sans-serif;
+        }
+
+        .container {
+            width: 85%;
+            margin: 50px auto;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            text-align: center;
+            color: #1a1a1a;
+            letter-spacing: -1px;
+        }
+
+        .stats-grid {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 35px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 22px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.07);
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .card-title {
+            font-size: 18px;
+            color: #888;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-value {
+            font-size: 42px;
+            font-weight: 900;
+            color: #111;
+        }
+
+        .money {
+            color: #16a34a; /* vert premium */
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 40px;
+            font-size: 18px;
+            padding: 12px 26px;
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #333;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📊 Insights Instagram</h1>
+
+    <div class="stats-grid">
+        <div class="card">
+            <div class="card-title">Vues</div>
+            <div class="card-value">{{ stats.views }}</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Likes</div>
+            <div class="card-value">{{ stats.likes }}</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Abonnés</div>
+            <div class="card-value">{{ stats.followers }}</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Revenus générés</div>
+            <div class="card-value money">{{ stats.money }} €</div>
+        </div>
+    </div>
+
+    <center>
+        <a href="/" class="back-btn">Retour</a>
+    </center>
+
+</div>
+
+</body>
+</html>

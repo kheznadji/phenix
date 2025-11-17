@@ -1,0 +1,191 @@
+/* ---------- GLOBAL ---------- */
+body {
+    background-image: url("/static/images/phenix.webp"); /* chemin vers ton image */
+    background-repeat: no-repeat;   /* pour ne pas répéter l'image */
+    background-size: cover;         /* pour qu'elle remplisse tout l'écran */
+    background-position: center;    /* pour centrer l'image */
+}
+
+/* ---------- PAGE D'ACCUEIL ---------- */
+.welcome-screen {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    /* Fond image + gradient overlay léger */
+    background-image: url("/static/images/phenix.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(255,255,255,0.2); /* légère teinte si tu veux */
+}
+.welcome-content {
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9); /* blanc légèrement transparent */
+    background: rgba(255, 255, 255, 0.1); /* fond très léger pour l'effet verre */
+    backdrop-filter: blur(5px); /* flou derrière le texte */
+    padding: 10px 20px;
+    border-radius: 12px;
+    display: inline-block;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* pour faire ressortir le texte */
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-size: 1.4rem;
+    background: linear-gradient(to right, #e0ffe0, #ffffff); /* vert très pâle vers blanc */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.btn-start {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 18px 40px;
+    background: #00c97a;
+    color: white;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 5px 25px rgba(0, 255, 150, 0.3);
+    transition: 0.3s;
+}
+
+.btn-start:hover {
+    background: #00e08d;
+    box-shadow: 0 8px 35px rgba(0, 255, 150, 0.5);
+    transform: translateY(-3px);
+}
+
+
+/* ---------- SECTION CLASSEMENT ---------- */
+.leaderboard-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f0fff4, #e0ffe8); /* Fond blanc → vert clair */
+    min-height: 100vh;
+}
+
+/* ---------- CONTENEUR ---------- */
+.container {
+    width: 85%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ---------- TITRE ---------- */
+.title {
+    font-size: 3rem;
+    color: #00b86f;
+    margin-bottom: 40px;
+    text-shadow: 0 3px 20px rgba(0, 255, 150, 0.2);
+    font-family: 'Orbitron', 'Poppins', sans-serif;
+}
+
+.subtitle {
+    font-family: 'Audiowide', cursive;
+    font-size: 1.5rem;
+    color: #1f1f1f;
+    text-align: center;
+    text-shadow:
+        0 0 5px rgba(0, 255, 150, 0.1),
+        0 0 10px rgba(0, 255, 150, 0.05);
+    margin-bottom: 30px;
+}
+
+/* ---------- TABLEAU ---------- */
+.board {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ---------- CARTE UTILISATEUR ---------- */
+.user-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-left: 8px solid #00c97a;
+    border-radius: 20px;
+    padding: 15px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0px 15px 35px rgba(0, 200, 120, 0.25);
+    backdrop-filter: blur(15px);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* ---------- HOVER ---------- */
+.user-card:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0px 20px 50px rgba(0, 200, 120, 0.35);
+}
+
+/* ---------- RANG ---------- */
+.rank {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: "Orbitron", "Poppins", sans-serif;
+    color: #00b86f;
+    margin-right: 20px;
+    text-shadow: 0 2px 10px rgba(0, 184, 111, 0.4);
+}
+
+/* ---------- NOM ---------- */
+.username {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1f1f1f;
+}
+
+/* ---------- TOKENS ---------- */
+.tokens {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #00b86f;
+}
+
+/* ---------- ESPACEMENT DES CARTES ---------- */
+.board {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- ANIMATION FLUIDE POUR CARTES IMPAIRES ---------- */
+.user-card:nth-child(odd) {
+    animation: float 4s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+    .user-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .rank {
+        margin-bottom: 10px;
+    }
+}
+
